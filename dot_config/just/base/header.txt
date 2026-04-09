@@ -1,0 +1,6 @@
+#!/usr/bin/env -S just --justfile
+set unstable := true
+set shell := ["bash", "-eu", "-c"]
+set script-interpreter := ["bash", "-eu"]
+
+export JUST_TASKS_VERBOSE := env('JUST_TASKS_VERBOSE', '')

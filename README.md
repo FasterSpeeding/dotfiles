@@ -5,5 +5,5 @@ Chezmoi based dotfiles repository.
 ## Getting Started
 
 ```
-chezmoi init --apply https://github.com/FasterSpeeding/dotfiles
+chezmoi init --apply git@github.com:FasterSpeeding/dotfiles.git
 ```
