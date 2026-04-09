@@ -1,0 +1,57 @@
+[plugins]
+krew = "https://github.com/soupglasses/mise-krew.git#2.0.0"
+
+[tools]
+# Languages
+go = "1.26"
+java = "openjdk-21"
+kotlin = "2"
+node = "24"
+python = "3.14"
+rust = { version = "1.94", components = "cargo,clippy,rustc,rustfmt,rust-analyzer" }
+# CLI tools
+atuin = "18.13.6"
+"http:bash-preexec"= { version = "0.6.0", url = "https://github.com/rcaloras/bash-preexec/archive/refs/tags/{{ version }}.tar.gz", version_list_url = "https://api.github.com/repos/rcaloras/bash-preexec/releases", version_json_path = ".[].tag_name", bin = "bash-preexec.sh", rename_exe="bash-preexc.sh" }
+bat = "0.25.0"
+btop = "1.4.0"
+cargo-binstall = "1.15.6"
+chezmoi = "2.70.1"
+cmake = "4.1"
+cosign = "3.0.5"
+"go:github.com/schollz/croc/v10" = "v10.4.2"
+direnv = "2.37.1"
+eza = "0.23.4"
+flux2 = "2.8.5"
+git-lfs = "3.7.0"
+helm = "4.1.4"
+jq = "1.8.1"
+just = "1.49.0"
+"pipx:kseal" = "2.0.2"
+kubeconform = "0.7.0"
+kubeseal = "0.36.0"
+kustomize = "5.8.1"
+make = "4.4.1"
+# "krew:neat" = "2.0.4" - Fails to install right now
+neovim = "0.11.4"
+minikube = "1.38.1"
+ninja = "1.13.1"
+opentofu = "1.11.5"
+starship = "1.24.2"
+"krew:tree" = "0.6.0"
+uv = "0.11.3"
+"pipx:yt-dlp" = "2026.3.17"
+yq = "4.52.5"
+zoxide = "0.9.9"
+
+[settings]
+activate_aggressive = true
+experimental = true
+gpg_verify = true
+lockfile = false
+not_found_auto_install = false
+paranoid = true
+plugin_autoupdate_last_check_duration = "0"
+go_skip_checksum = true
+
+[settings.python]
+compile = true

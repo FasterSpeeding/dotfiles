@@ -1,0 +1,7 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>FasterSpeeding/Piped//config/renovate.json5"],
+  "mise": {
+    "managerFilePatterns": ["/^dot_config/mise/config\\.yaml$/"]
+  }
+}
