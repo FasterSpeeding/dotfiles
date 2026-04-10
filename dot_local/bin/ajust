@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-python "$HOME/.config/just/enter.py" "$@"
+python "$HOME/.config/ajust/enter.py" "$@"
