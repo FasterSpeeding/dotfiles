@@ -1,7 +1,8 @@
+import os
 import subprocess
 
 
-SERVICES = list(filter(None, {{ DOTFILE_SERVICES | quote }}.split(",")))
+SERVICES = filter(None, os.environ.get("DOTFILE_SERVICES", "").split(","))
 
 
 def main() -> None:
