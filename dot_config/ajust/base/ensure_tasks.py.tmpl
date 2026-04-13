@@ -1,0 +1,13 @@
+import subprocess
+
+
+SERVICES = list(filter(None, {{ DOTFILE_SERVICES | quote }}.split(",")))
+
+
+def main() -> None:
+    for name in SERVICES:
+        subprocess.call(["subprocess", "enable", "--now", name], check=True)
+
+
+if __name__ == "__main__":
+    main()
