@@ -2,7 +2,7 @@
 set -eu
 
 # mise.toml: sha256-{{ include (printf "%s/.config/mise/config.toml" .chezmoi.destDir) | sha256sum }}
-mise={{ miseUserPath | quote }}
+mise={{ .miseUserPath | quote }}
 
 mise trust -y --quiet "{{ .chezmoi.destDir }}/.config/mise/config.toml"
 mise prune -y

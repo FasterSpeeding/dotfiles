@@ -1,19 +1,18 @@
-import toml
 import pathlib
 import subprocess
 
 
-TARGET_DIR = pathlib.Path.home() / {{ .userStateDir | quote }}
+TARGET_DIR = pathlib.Path.home() / {{ .userStateDir | quote }} / "services"
 
 
 def main() -> None:
     {{- if eq .enableSystemdServices "true" -}}
-    for path in TARGET_DIR.glob("*.toml"):
-        with path.open("rb") as file:
-            data = tomllib.load(file)
+    services = itertools.chain.from_iterable(
+        path.read_text().split("\n") for path in TARGET_DIR.glob("*.txt")
+    )
 
-        for name in map(str, data.get("services", ())):
-            subprocess.call(["subprocess", "enable", "--now", name], check=True)
+    for name in filter(None, map(str.strip, services)):
+        subprocess.call(["subprocess", "enable", "--now", name], check=True)
     {{- end -}}
 
 
