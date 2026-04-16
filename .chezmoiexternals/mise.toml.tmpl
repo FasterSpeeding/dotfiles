@@ -1,6 +1,4 @@
-{{- if not (lookPath "mise") -}}
-[".local/bin/mise"]
+[{{ .miseUserPath | quote} }]
 type = "file"
 executable = true
-url = "https://mise.jdx.dev/mise-latest-{{.chezmoi.os}}-{{.chezmoi.arch}}"
-{{- end -}}
+url = {{ gitHubReleaseAssetURL "jdx/mise" (printf "v%s" .miseVersion | quote) (printf "mise-%s-%s-%s" .miseVersion .chezmoi.os .chezmoi.arch | quote) }}

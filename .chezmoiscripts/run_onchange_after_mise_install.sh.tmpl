@@ -1,9 +1,12 @@
 #!/bin/bash
 set -eu
 
-# mise.toml: sha256-{{ include "./dot_config/mise/config.toml" | sha256sum }}
-mise="$HOME/.local/bin/mise"
+# mise.toml: sha256-{{ include (printf "%s/.config/mise/config.toml" .chezmoi.destDir) | sha256sum }}
+mise={{ miseUserPath | quote }}
 
-mise trust -y --quiet "$HOME/.config/mise/config.toml"
+mise trust -y --quiet "{{ .chezmoi.destDir }}/.config/mise/config.toml"
 mise prune -y
+
+{{- if eq .installMiseDeps "true" -}}
 mise install -y
+{{- end -}}
