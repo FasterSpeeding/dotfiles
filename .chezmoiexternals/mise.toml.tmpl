@@ -1,4 +1,0 @@
-[{{ .miseUserPath | quote} }]
-type = "file"
-executable = true
-url = {{ gitHubReleaseAssetURL "jdx/mise" (printf "v%s" .miseVersion | quote) (printf "mise-%s-%s-%s" .miseVersion .chezmoi.os .chezmoi.arch | quote) }}

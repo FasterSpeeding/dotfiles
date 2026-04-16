@@ -1,12 +1,14 @@
 #!/bin/bash
+{{- $misePath := printf "%s/.config/mise/config.toml" .chezmoi.destDir }}
+{{- $skipMiseDeps := env "SKIP_MISE_DEPS" | default "false" }}
 set -eu
 
-# mise.toml: sha256-{{ include (printf "%s/.config/mise/config.toml" .chezmoi.destDir) | sha256sum }}
+# mise.toml: sha256-{{ include $misePath | sha256sum }}
 mise={{ .miseUserPath | quote }}
 
 mise trust -y --quiet "{{ .chezmoi.destDir }}/.config/mise/config.toml"
 mise prune -y
 
-{{- if eq .installMiseDeps "true" -}}
+{{- if ne $skipMiseDeps "false" }}
 mise install -y
-{{- end -}}
+{{- end }}

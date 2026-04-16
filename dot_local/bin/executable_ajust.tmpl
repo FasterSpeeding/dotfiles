@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+{{- $entryPath := printf "%s/.config/ajust/enter.py" .chezmoi.destDir}}
+
+python {{ $entryPath | quote }} "$@"

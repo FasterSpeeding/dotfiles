@@ -6,15 +6,15 @@ TARGET_DIR = pathlib.Path.home() / {{ .userStateDir | quote }} / "services"
 
 
 def main() -> None:
-    {{- if eq .enableSystemdServices "true" -}}
     services = itertools.chain.from_iterable(
         path.read_text().split("\n") for path in TARGET_DIR.glob("*.txt")
     )
 
     for name in filter(None, map(str.strip, services)):
         subprocess.call(["subprocess", "enable", "--now", name], check=True)
-    {{- end -}}
 
 
+{{- if eq .enableSystemdServices true }}
 if __name__ == "__main__":
     main()
+{{- end }}
